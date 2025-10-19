@@ -53,6 +53,7 @@ window.kindle.appmgr.ongo = function() {
       if (container) while (container.firstChild) container.removeChild(container.firstChild);
 
       pkgs = [];
+      lock = false;
 
       _fetch(
         "https://raw.githubusercontent.com/KindleTweaks/KindleForge/refs/heads/master/KFPM/Registry/registry.json",
