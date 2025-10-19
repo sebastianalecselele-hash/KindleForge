@@ -3,6 +3,8 @@
 set -e
 
 TMPDIR=/mnt/us/KF-Update-Temp
+
+rm -rf "$TMPDIR" # Cleanup Any Previous Temp
 mkdir -p "$TMPDIR"
 
 eips 1 25 "Updating KindleForge, Please Wait..."
