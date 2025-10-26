@@ -74,10 +74,10 @@ A: This happens commonly after you fix the core dump issue, please use the "Upda
 If this doesn't work:
 
 1. Remove:
-—  documents/KindleForge.sh
-—  documents/KindleForge
+   -  documents/KindleForge.sh
+   -  documents/KindleForge
 2. Reboot
-3. https://github.com/KindleTweaks/KindleForge/?tab=readme-ov-file#installation
+3. Re-install with the above steps.
 
 **Q: App is installing/uninstalling forever!**
 
