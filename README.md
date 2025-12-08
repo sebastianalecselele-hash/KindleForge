@@ -90,3 +90,7 @@ A: Could be caused by a multitude of issues such as beginning the install withou
 - Clint, event & KFPM troubleshooting, scroll help
 - Dammit Jeff, repository icons
 - ThatPotatoDev, ABI differentiation, dependencies, & tweak support
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=KindleTweaks/KindleForge&type=date&legend=top-left)](https://www.star-history.com/#KindleTweaks/KindleForge&type=date&legend=top-left)
