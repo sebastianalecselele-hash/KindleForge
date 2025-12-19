@@ -56,7 +56,7 @@ window.kindle.appmgr.ongo = function() {
       lock = false;
 
       _fetch(
-        "https://kf.penguins184.xyz/registry.json",
+        "https://sebastianalecselele-hash.github.io/KindleForge/registry.json",
         function() {
           _file("file:///mnt/us/.KFPM/installed.txt").then(function(data) {
             var joined = data.replace(/\d+\.\s*/g, "\n").trim();
@@ -68,7 +68,7 @@ window.kindle.appmgr.ongo = function() {
         }
       );
     } else if (id === "KFORGE_UPDATE") {
-      window.kindle.messaging.sendStringMessage("com.kindlemodding.utild", "runCMD", "curl https://kf.penguins184.xyz/update.sh | sh");
+      window.kindle.messaging.sendStringMessage("com.kindlemodding.utild", "runCMD", "curl https://sebastianalecselele-hash.github.io/KindleForge/update.sh | sh");
     };
   });
 };
@@ -374,7 +374,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }, 10);
   
   _fetch(
-    "https://kf.penguins184.xyz/registry.json"
+    "https://sebastianalecselele-hash.github.io/KindleForge/registry.json"
   );
   document.getElementById("js-status").innerText = "JS Working!";
 });
