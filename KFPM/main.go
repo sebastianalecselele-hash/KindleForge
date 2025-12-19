@@ -20,8 +20,8 @@ import (
 )
 
 const (
-    registryURL   = "https://sebastianalecselele-hash/KindleForge/registry.json"
-    registryBase  = "https://sebastianalecselele-hash/KindleForge/"
+    registryURL   = "https://sebastianalecselele-hash.github.io/KindleForge/registry.json"
+    registryBase  = "https://sebastianalecselele-hash.github.io/KindleForge/"
     installedFile = "/mnt/us/.KFPM/installed.txt"
 )
 
