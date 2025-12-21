@@ -1,5 +1,13 @@
 [
     {
+        "name": "No Updates?",
+        "uri": "DisableUp",
+        "description": "Disables / Reenbles Updates",
+        "author": "    Unknown",
+        "ABI": ["hf", "sf"],
+        "dependencies": []
+    },
+    {
         "name": "Toggle ADs",
         "uri": "ToggleAds",
         "description": "Toggle Ads On/Off Scriptlet",
