@@ -1,7 +1,7 @@
 [
     {
         "name": "No Updates?",
-        "uri": "DisableUp",
+        "uri": "renameotabins",
         "description": "Disables / Reenbles Updates",
         "author": "    Unknown",
         "ABI": ["hf", "sf"],
