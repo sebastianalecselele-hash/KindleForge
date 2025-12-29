@@ -7,8 +7,7 @@ TMPDIR=/mnt/us/KFPM-Temporary
 mkdir -p "$TMPDIR"
 
 # Download + Extract
-curl -fSL --progress-bar -o "$TMPDIR/renameotabins.zip" https://github.com/crazy-electron/GnomeGames4Kindle/releases/latest/download/gnomegames.zip
-unzip -q "$TMPDIR/renameotabins.zip" -d "$TMPDIR"
+curl -fSL --progress-bar -o "$TMPDIR/renameotabins.zip" https://github.com/sebastianalecselele-hash/KindleForge/releases/download/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/renameotabins.zip
 
 # First Subfolder
 SUBDIR=$(find "$TMPDIR" -mindepth 1 -maxdepth 1 -type d | head -n 1)
