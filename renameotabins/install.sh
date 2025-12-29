@@ -14,7 +14,7 @@ SUBDIR=$(find "$TMPDIR" -mindepth 1 -maxdepth 1 -type d | head -n 1)
 
 # Copy Contents
 mkdir -p /mnt/us/extensions/renameotabins
-cp -r "$SUBDIR"/* /mnt/us/extensions/gnomegames
+cp -r "$SUBDIR"/* /mnt/us/extensions/renameotabins
 
 # Cleanup
 rm -rf "$TMPDIR"
