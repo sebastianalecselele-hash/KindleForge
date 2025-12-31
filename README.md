@@ -32,7 +32,7 @@ KindleForge is a GUI Appstore for Kindles, allowing you to download & install tw
 
 - AdBreak, WinterBreak, or LanguageBreak
 - Latest Universal Hotfix
-- Above the 5.13.7 firmware (at present - to be lowered)
+- Above or on the 5.12.2.2 firmware (4.1.0 adds Chromebar fixes; Application Errors may show but usually harmless)
 - Both **hard-float and soft-float** kindles should work, but not all packages may support both architectures.
 
 ## Troubleshooting
@@ -61,7 +61,7 @@ A: Ensure you have copied `KindleForge.sh` into your documents folder. If this i
 
 **Q: When I click on the scriptlet, it says "Application Error!"**
 
-A: Chances are, you've installed KindleForge incorrectly. **BOTH the folder AND scriptlet MUST be in the `documents` folder on your kindle!** 
+A: Chances are, you've installed KindleForge incorrectly. **BOTH the folder AND scriptlet MUST be in the `documents` folder on your kindle!**. If you are on an elder firmware this is a usually harmless popup and the app will open regardless - this is being investigated.
 
 **Q: I keep getting core dumps & crashlogs generated when using KindleForge/Scriptlets!**
 
