@@ -8,6 +8,7 @@
 package main
 
 import (
+    "context"
     "encoding/json"
     "errors"
     "fmt"
@@ -17,6 +18,7 @@ import (
     "os/exec"
     "slices"
     "strings"
+    "time"
 )
 
 const (
@@ -164,7 +166,15 @@ func install(pkgId string, verbose bool, loopedDeps []string) error {
 // Install/Uninstall Runners
 func runScript(pkg string, action string, verbose bool) bool {
     url := fmt.Sprintf("%s%s/%s.sh", registryBase, pkg, action)
-    cmd := exec.Command("/bin/sh", "-c", "curl -fSL --progress-bar "+url+" | sh")
+
+    ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
+    defer cancel()
+
+    cmd := exec.CommandContext(
+        ctx,
+        "/bin/sh", "-c",
+        "curl -fSL --progress-bar "+url+" | sh",
+    )
 
     if verbose {
         cmd.Stdout = os.Stdout
@@ -172,7 +182,49 @@ func runScript(pkg string, action string, verbose bool) bool {
     }
 
     err := cmd.Run()
+
+    if ctx.Err() == context.DeadlineExceeded {
+        timeout(pkg, action)
+        return false
+    }
+
     return err == nil
+}
+
+func timeout(pkg string, action string) {
+    var actionLabel string
+    if action == "install" {
+        actionLabel = "Install"
+    } else {
+        actionLabel = "Uninstall"
+    }
+
+    title := fmt.Sprintf("%s Failure!", actionLabel)
+    text := fmt.Sprintf(
+        "KindleForge Could Not %s %s! The Installation Timed Out. Please Refresh Packages & Retry.",
+        strings.Title(action),
+        pkg,
+    )
+
+    exec.Command(
+        "/bin/sh", "-c",
+        fmt.Sprintf(`
+rm -rf /mnt/us/KFPM-Temporary
+
+alert() {
+    TITLE="$1"
+    TEXT="$2"
+
+    TITLE_ESC=$(printf '%s' "$TITLE" | sed 's/"/\\"/g')
+    TEXT_ESC=$(printf '%s' "$TEXT" | sed 's/"/\\"/g')
+
+    JSON='{ "clientParams":{ "alertId":"appAlert1", "show":true, "customStrings":[ { "matchStr":"alertTitle", "replaceStr":"'"$TITLE_ESC"'" }, { "matchStr":"alertText", "replaceStr":"'"$TEXT_ESC"'" } ] } }'
+
+    lipc-set-prop com.lab126.pillow pillowAlert "$JSON"
+}
+alert "%s" "%s"
+`, title, text),
+    ).Run()
 }
 
 // Append Package To List

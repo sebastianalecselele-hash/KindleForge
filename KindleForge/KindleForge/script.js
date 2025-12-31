@@ -2,52 +2,82 @@
   KindleForge
   Kindle GUI Appstore
 
-  Last Updated 10/25
+  Last Updated 12/25 - 01/26
 */
 
+//Chromebar Logic
 function update() {
-  var chromebar = {
-    "appId": "xyz.penguins184.kindleforge",
-    "topNavBar": {
-      "template": "title",
-      "title": "KindleForge",
-      "buttons": [
-        { "id": "KPP_MORE", "state": "enabled", "handling": "system" },
-        { "id": "KPP_CLOSE", "state": "enabled", "handling": "system" }
-      ]
-    },
-    "systemMenu": {
-      "clientParams": {
-        "profile": {
-          "name": "default",
-          "items": [
-            {
-              "id": "KFORGE_REFRESH",
-              "state": "enabled",
-              "handling": "notifyApp",
-              "label": "Refresh Packages",
-              "position": 0
-            },
-            {
-              "id": "KFORGE_UPDATE",
-              "state": "enabled",
-              "handling": "notifyApp",
-              "label": "Update KForge",
-              "position": 1
-            }
-          ],
-          "selectionMode": "none",
-          "closeOnUse": true
-        }
+  var systemMenu = { //Base Menu. See https://m.media-amazon.com/images/I/A1ebeenJUXL.js?AUIClients/DBSCHorizonteJunoStoreJSAssets#asrMode-off.debug-true.splitStoreType-primary.356327-T1 (Search 'systemChrome.js')
+    "clientParams": {
+      "profile": {
+        "name": "default",
+        "items": [
+          {
+            "id": "KFORGE_REFRESH",
+            "state": "enabled",
+            "handling": "notifyApp",
+            "label": "Refresh Packages",
+            "position": 0
+          },
+          {
+            "id": "KFORGE_UPDATE",
+            "state": "enabled",
+            "handling": "notifyApp",
+            "label": "Update KForge",
+            "position": 1
+          },
+          {
+            "id": "KFORGE_RELOAD",
+            "state": "enabled",
+            "handling": "notifyApp",
+            "label": "Developer Refresh",
+            "position": 2
+          }
+        ],
+        "selectionMode": "none",
+        "closeOnUse": true
       }
     }
   };
-  window.kindle.messaging.sendMessage("com.lab126.chromebar", "configureChrome", chromebar);
+
+  if(window.kindle.chrome.isDecanterChromeEnabled) { //KPP Modern Payload
+    var chromebar = {
+      "appId": "xyz.penguins184.kindleforge",
+      "topNavBar": {
+        "template": "title",
+        "title": "KindleForge",
+        "buttons": [
+          { "id": "KPP_MORE", "state": "enabled", "handling": "system" },
+          { "id": "KPP_CLOSE", "state": "enabled", "handling": "system" }
+        ]
+      }
+    };
+
+    chromebar.systemMenu = systemMenu;
+    window.kindle.messaging.sendMessage("com.lab126.chromebar", "configureChrome", chromebar);
+  } else {
+    var pillowbar = {
+      "appId": "xyz.penguins184.kindleforge",
+      "searchBar": {
+        "clientParams": {
+          "profile": {
+            "name": "default",
+            "buttons": [
+              { "id": "menu", "state": "enabled", "handling": "system" }
+            ]
+          }
+        }
+      }
+    };
+
+    pillowbar.systemMenu = systemMenu;
+    window.kindle.messaging.sendMessage("com.lab126.pillow", "configureChrome", pillowbar);
+  };
 }
 
 window.kindle.appmgr.ongo = function() {
   update();
-  window.kindle.messaging.receiveMessage("systemMenuItemSelected", function(eventType, id) {
+  window.kindle.messaging.receiveMessage("systemMenuItemSelected", function(eventType, id) { //Should Work Regardless Of Decanter/Pillow
     if (id === "KFORGE_REFRESH") {
       var container = document.getElementById("packages");
       if (container) while (container.firstChild) container.removeChild(container.firstChild);
@@ -69,9 +99,23 @@ window.kindle.appmgr.ongo = function() {
       );
     } else if (id === "KFORGE_UPDATE") {
       window.kindle.messaging.sendStringMessage("com.kindlemodding.utild", "runCMD", "curl https://kf.penguins184.xyz/update.sh | sh");
+    } else if (id === "KFORGE_RELOAD") {
+      window.location.reload();
     };
   });
 };
+
+//Handle Wi-Fi Prompt
+kindle.net.ensureConnection("all", false, function (response) {
+  if (response === "failure-user-canceled" || response === "failure-user-canceled-wifi-popup" || response === "failure-prompt-disallowed") {
+    window.kindle.appmgr.start("com.lab126.booklet.home"); //Send Home.
+
+    setTimeout(function () {
+      window.kindle.messaging.sendStringMessage("com.kindlemodding.utild", "runCMD", "killall mesquite"); //Appear On Re-entry!
+    }, 500);
+    return;
+  } //Otherwise, Continue!
+});
 
 var cards = [];
 var elems = document.getElementsByClassName("card");
@@ -237,6 +281,15 @@ function render(installed) {
 
     var tBox = document.createElement("div");
     tBox.className = "title-box";
+
+    if (pkg.tags && pkg.tags.length > 0) {
+      for (var t = 0; t < pkg.tags.length; t++) {
+        var tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = pkg.tags[t];
+        tBox.appendChild(tag);
+      }
+    }
 
     var h2 = document.createElement("h2");
     h2.className = "title";
