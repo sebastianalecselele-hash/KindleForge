@@ -25,13 +25,6 @@ function update() {
             "handling": "notifyApp",
             "label": "Update KForge",
             "position": 1
-          },
-          {
-            "id": "KFORGE_RELOAD",
-            "state": "enabled",
-            "handling": "notifyApp",
-            "label": "Developer Refresh",
-            "position": 2
           }
         ],
         "selectionMode": "none",
@@ -39,6 +32,17 @@ function update() {
       }
     }
   };
+
+  /*
+  ,
+          {
+            "id": "KFORGE_RELOAD",
+            "state": "enabled",
+            "handling": "notifyApp",
+            "label": "Developer Refresh",
+            "position": 2
+          }
+  */
 
   if(window.kindle.chrome.isDecanterChromeEnabled) { //KPP Modern Payload
     var chromebar = {
@@ -100,7 +104,7 @@ window.kindle.appmgr.ongo = function() {
     } else if (id === "KFORGE_UPDATE") {
       window.kindle.messaging.sendStringMessage("com.kindlemodding.utild", "runCMD", "curl https://kf.penguins184.xyz/update.sh | sh");
     } else if (id === "KFORGE_RELOAD") {
-      window.location.reload();
+      window.location.reload(); //Developer Refresh, If Enabled.
     };
   });
 };
