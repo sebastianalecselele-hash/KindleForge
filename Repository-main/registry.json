@@ -1,0 +1,191 @@
+[
+    {
+        "name": "Toggle ADs",
+        "uri": "ToggleAds",
+        "description": "Toggle Ads On/Off Scriptlet",
+        "author": "Marek & Penguins",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["UTILITY"]
+    },
+    {
+        "name": "KOReader",
+        "uri": "KOReader",
+        "description": "An E-Book Reader Application",
+        "author": "Hans-Werner",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["MEDIA", "PRODUCTIVITY"]
+    },
+    {
+        "name": "kTerm",
+        "uri": "kTerm",
+        "description": "GTK+ Terminal Emulator for Kindle",
+        "author": "Bartek Fabiszewski",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["UTILITY", "DEVELOPMENT"]
+    },
+    {
+        "name": "KindleFetch",
+        "uri": "KindleFetch",
+        "description": "Download Books From Anna's Archive",
+        "author": "Justrals",
+        "ABI": ["hf", "sf"],
+        "dependencies": ["kTerm"],
+        "tags": ["UTILITY", "MEDIA"]
+    },
+    {
+        "name": "UpdateBlock Status",
+        "uri": "UpdateBlockStatus",
+        "description": "Check If OTAs Are Renamed",
+        "author": "Neura, Dammit Jeff",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["UTILITY"]
+    },
+    {
+        "name": "Gambatte-K2",
+        "uri": "GambatteK2",
+        "description": "Upgraded Gameboy Emulator For Kindle",
+        "author": "CrazyElectron",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["GAMES"]
+    },
+    {
+        "name": "Gnome Games Suite",
+        "uri": "GnomeGames",
+        "description": "Gnome Games Suite For Kindle",
+        "author": "CrazyElectron",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["GAMES"]
+    },
+    {
+        "name": "KWordle",
+        "uri": "KWordle",
+        "description": "Wordle Clone For Kindle",
+        "author": "Kurizu",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["GAMES"]
+    },
+    {
+        "name": "KAnki",
+        "uri": "KAnki",
+        "description": "Anki Flashcard App For Kindle",
+        "author": "Kurizu",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["PRODUCTIVITY"]
+    },
+    {
+        "name": "KNotes",
+        "uri": "KNotes",
+        "description": "A Simple Note-Taking App For Kindle",
+        "author": "Kurizu",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["PRODUCTIVITY"]
+    },
+    {
+        "name": "KShips",
+        "uri": "KShips",
+        "description": "Battleship Game For Kindle",
+        "author": "LOT_PL",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["GAMES"]
+    },
+    {
+        "name": "JarLauncher",
+        "uri": "JarLauncher",
+        "description": "Java Installer and Jar Launcher",
+        "author": "ThatPotatoDev",
+        "ABI": ["hf", "sf"],
+        "dependencies": ["kTerm"],
+        "tags": ["UTILITY", "DEVELOPMENT"]
+    },
+    {
+        "name": "KPM",
+        "uri": "KPM",
+        "description": "A Kindle Package Manager",
+        "author": "Gingrspacecadet",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["UTILITY"]
+    },
+    {
+        "name": "Kreate",
+        "uri": "Kreate",
+        "description": "A Simple Drawing Application For Kindle",
+        "author": "Foskya",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["PRODUCTIVITY", "MEDIA"]
+    },
+    {
+        "name": "SOX Media Player",
+        "uri": "SOX",
+        "description": "A Simple Bluetooth Audio Player For Kindle",
+        "author": "Dhdurgee",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["MEDIA"]
+    },
+    {
+        "name": "KinAMP",
+        "uri": "KinAMP",
+        "description": "An Advanced GUI Audio Player For Kindle",
+        "author": "Barna",
+        "ABI": ["hf"],
+        "dependencies": [],
+        "tags": ["MEDIA"]
+    },
+    {
+        "name": "LARKPlayer",
+        "uri": "LARKPlayer",
+        "description": "LARK Is a M4B Audiobook Reader for Kindles",
+        "author": "Barna",
+        "ABI": ["hf"],
+        "dependencies": [],
+        "tags": ["MEDIA"]
+    },
+    {
+        "name": "KindleCraft",
+        "uri": "KindleCraft",
+        "description": "A Basic Minecraft Server (1.21.8)",
+        "author": "P2R3, Gingrspacecadet",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["GAMES"]
+    },
+    {
+        "name": "Gargoyle",
+        "uri": "Gargoyle",
+        "description": "A Text Adventure Interpreter",
+        "author": "Barna, Pete330",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["GAMES"]
+    },
+    {
+        "name": "Textadept",
+        "uri": "Textadept",
+        "description": "A Desktop-Grade Text Editor For Kindle",
+        "author": "Barna",
+        "ABI": ["hf"],
+        "dependencies": ["kTerm"],
+        "tags": ["DEVELOPMENT", "PRODUCTIVITY"]
+    },
+    {
+        "name": "KUAL",
+        "uri": "KUAL",
+        "description": "Kindle Unified Application Launcher",
+        "author": "Marek & Penguins",
+        "ABI": ["hf", "sf"],
+        "dependencies": [],
+        "tags": ["UTILITY"]
+    }
+]
